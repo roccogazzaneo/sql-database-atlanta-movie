@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Atlanta Movie</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<style type="text/css">
+    .table.table-striped {
+        width: 75%;
+        margin: 0 auto;
+        border-width: 1px;
+        background-color: rgba(150, 150, 150, 0.26);
+        border-color: #000000;
+    }
+</style>
+
+<body>
+
+    <center>
+        <h1>Explore Theater</h1>
+    </center>
+
+    <br>
+<form action="/functionality" method="get">
+    <center>
+    <button type="submit" id="btnsubmit" class="btn btn-default">Back</button>
+    </center>
+</form>
+<br>
+<form action="/explore_theater/false" method="post" enctype="multipart/form-data" >
+    <div>
+        <center>
+        <label>Theater Name</label>
+        <select name="theaterName">
+            {% for name in theater_names %}
+            <option value="{{name}}">{{name}}</option>
+            {% endfor %}
+        </select>
+        <label>Company Name</label>
+        <select name="comName">
+            {% for name in company_names %}
+            <option value="{{name}}">{{name}}</option>
+            {% endfor %}
+        </select>
+        </center>
+    </div>
+    <div>
+        <center>
+        <table>
+            <tr>
+                <td>
+                    <label>City</label>
+                    <input type="text" name="city" size="10"> 
+                </td>
+                <td>
+                    <label>State</label>
+                    <select name="state">
+                        {% for state in states %}
+                        <option value={{state}}>{{state}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>
+    <div>
+        <center>
+        <button type="submit" id="btnsubmit" class="btn btn-default">Filter</button>
+        </center>
+        <input type="hidden" name="type" value="filter">
+    </div>
+</form>
+
+<form action="/explore_theater/false" method="post" enctype="multipart/form-data" >
+    <center>
+    <div class="form-group">
+        <table class="table table-striped">
+            <tr>
+                <th>Select</th>
+                <th>Theater</th>
+                <th>Address</th>
+                <th>Company</th>
+            </tr>
+        
+        {% for theater in theaters %}
+        <tr>
+            <td><input type="radio" name="theater_index" value={{loop.index0}}></td>
+            <td>{{theater[0]}}</td>
+            <td>{{theater[1]}}, {{theater[2]}}, {{theater[3]}} {{theater[4]}}</td>
+            <td>{{theater[5]}}</td>
+        </tr>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <div class="form-group">
+        <center>
+        <input type="hidden" name="type" value="view">
+        <input type="date" name="visit_date">
+        <button type="submit" id="btnsubmit" class="btn btn-default" name="action">Log Visit</button>
+        </center>
+    </div>
+    </center>
+</form>
+
+
+</body>
+
+</html>

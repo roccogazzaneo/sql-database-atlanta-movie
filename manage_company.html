@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Atlanta Movie</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<style type="text/css">
+    .table.table-striped {
+        width: 75%;
+        margin: 0 auto;
+        border-width: 1px;
+        background-color: rgba(150, 150, 150, 0.26);
+        border-color: #000000;
+    }
+</style>
+
+<body>
+
+    <center>
+        <h1>Manage Company</h1>
+    </center>
+
+    <br>
+<form action="/functionality" method="get">
+    <center>
+    <button type="submit" id="btnsubmit" class="btn btn-default">Back</button>
+    </center>
+</form>
+<br>
+<form action="/manage_company/false" method="post" enctype="multipart/form-data" >
+    <div>
+        <center>
+            <table>
+                <tr>
+                    <td><label>#Cities</label></td>
+                    <td><input type="number" name="minCity"> -- <input type="number" name="maxCity"></td>
+                </tr>
+                <tr>
+                    <td><label>#Theaters</label></td>
+                    <td><input type="number" name="minTheater"> -- <input type="number" name="maxTheater"></td>
+                </tr>
+                <tr>
+                    <td><label>#Employees</label></td>
+                    <td><input type="number" name="minEmployee"> -- <input type="number" name="maxEmployee"></td>
+                </tr>
+            </table>
+        <br>
+        <label>Name</label>
+        <select name="comName">
+            {% for name in company_names %}
+            <option value="{{name}}">{{name}}</option>
+            {% endfor %}
+        </select> 
+        <button type="submit" id="btnsubmit" class="btn btn-default">Filter</button>
+        </center>
+        <input type="hidden" name="type" value="filter">
+    </div>
+</form>
+
+<form action="/create_theater" method="get">
+    <center>
+    <button type="submit" id="btnsubmit" class="btn btn-default">Create Theater</button>
+    </center>
+</form>
+
+<form action="/manage_company/false" method="post" enctype="multipart/form-data" >
+    <center>
+    <div class="form-group">
+        <button type="submit" id="btnsubmit" class="btn btn-default" name="action">Detail</button>
+    </div>
+    </center>
+    <div class="form-group">
+        <table class="table table-striped">
+            <tr>
+                <th>Select</th>
+                <th><a href="/manage_company_sort/comName">Name</a></th>
+                <th><a href="/manage_company_sort/numCityCover">#CityCovered</a></th>
+                <th><a href="/manage_company_sort/numTheater">#Theaters</a></th>
+                <th><a href="/manage_company_sort/numEmployee">#Employees</a></th>
+            </tr>
+        
+        {% for company in companies %}
+        <tr>
+            <td><input type="radio" name="company_name" value="{{company[0]}}"></td>
+            <td>{{company[0]}}</td>
+            <td>{{company[1]}}</td>
+            <td>{{company[2]}}</td>
+            <td>{{company[3]}}</td>
+        </tr>
+        {% endfor %}
+        
+        </table>
+    </div>
+    <input type="hidden" name="type" value="detail">
+</form>
+
+
+</body>
+
+</html>

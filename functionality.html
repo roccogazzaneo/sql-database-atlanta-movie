@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Atlanta Movie</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<style type="text/css">
+    form {
+        width: 50%;
+        margin: 0 auto;
+        border-width: 1px;
+        border-color: #000000;
+    }
+</style>
+
+
+<body>
+
+    <center>
+        <h1>{{user_type}} Functionality</h1>
+    <br>
+
+    <br>
+
+    {% if isAdmin %}
+    <form action="/manage_user/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Manage User</button>
+    </form>
+    <form action="/manage_company/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Manage Company</button>
+    </form>
+    <form action="/create_movie" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Create Movie</button>
+    </form>
+    {% endif %}
+
+    {% if isManager %}
+    <form action="/theater_overview/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Theater Overview</button>
+    </form>
+    <form action="/schedule_movie" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Schedule Movie</button>
+    </form>
+    {% endif %}
+
+    {% if isCustomer %}
+    <form action="/view_history" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">View History</button>
+    </form>
+    <form action="/explore_movie/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Explore Movie</button>
+    </form>
+    {% endif %}
+
+    <form action="/explore_theater/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Explore Theater</button>
+    </form>
+    <form action="/visit_history/true" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Visit History</button>
+    </form>
+    <form action="/" method="get">
+        <button type="submit" id="btnsubmit" class="btn btn-default" style="width:200px">Back</button>
+    </form>
+    </center>
+
+</body>
+
+</html>
