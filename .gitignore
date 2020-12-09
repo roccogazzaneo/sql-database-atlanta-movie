@@ -1,0 +1,4 @@
+.DS_Store
+.flask_sessions/*
+.*.swo*
+.*.swp*

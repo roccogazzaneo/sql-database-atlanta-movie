@@ -1,0 +1,14 @@
+CS4400 Group 52 project has been tested and verified using Python 3.
+Please use python3 and pip3 explicitly if required by your environment.
+
+python3 -m pip install PyMySQL
+python3 -m pip install Flask
+python3 -m pip install Flask-Session
+
+To run the server:
+
+python3 server.py
+
+If permission denied:
+
+sudo python3 server.py
